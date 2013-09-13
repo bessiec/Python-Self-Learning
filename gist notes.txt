@@ -1,0 +1,70 @@
+import sqlite3
+
+class User(object):
+	def__init__(self, id, first_name, last_name):
+	self.id = id
+	self.first_name = first_name
+	self.last_name = last_name
+
+def get_user_by_id(id):
+	q = "SELECT * from users where id= ?"
+	result = db.execute(q, (id,))
+	row = result.fetch_one()
+	user = User(row[0], row[1], row[2])
+	return user 
+
+def get_user_by_any(**kwargs):
+	q = "SELECT *  from users where ""
+	query_tuple = tuple()
+	for key, value in kwargs.items():
+		q += " %s = ? " %(key)
+		query_tuple += (value,)
+
+#things that come in from ** come in as a dictionary 
+#take any num of arguments taken from keywords building it with one WHERE clause at a time 
+
+
+#this makes the class into a sql db 
+
+Base = declaretive_base()
+
+class User(Base):
+	__tablename__ = "users"
+	id = Column(Integer, primary_key=True)
+	name = Column(String)
+	password = Column(String)
+
+create table users (id integer primary key not null autoincrement, name varchar (65), password varchar(64));
+
+#so in terminal when we do:
+
+make()
+liz = User(name="Liz Thedeveloper", password="Christianiscool")
+liz
+>>>>Object gets created
+liz.name
+>>>>'Liz The developer'
+
+#THE DATABASE IS STILL EMPTY NOW - so then we
+
+session.add(liz)
+session.commit()
+
+czf = User (name="Christian", password="Christianiscool")
+session.add(czf)
+session.commit()
+
+#SQL alchemy will directly insert into users and commit
+
+#Running queries
+
+>>>> liz = session.query(User).filter_by(name="Liz Thedeveloper")
+>>>> users[0].name
+u'Liz Thedeveloper'
+>>>>users[1].name
+u'Christian Fernandez'
+>>>>liz.name
+u'Liz Thedeveloper'
+liz.password = "Christianisawesome"
+session.commit()
+
