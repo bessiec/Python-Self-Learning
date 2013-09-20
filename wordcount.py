@@ -1,27 +1,21 @@
-#Hackbright Exercise 6 
+#Hackbright Exercise 6 Redux/Review in funemployment grad school time
+#https://github.com/chriszf/Hackbright-Curriculum/tree/master/Exercise06
+
 
 from sys import argv
-
 script, filename = argv
 
-txt = open(filename)
+f = open(filename).read().lower() #open and read the file, makes it into one string lowercase
+f.close() #close the file
+f_split = f.split() #split the string into a list
 
-f = txt.read()
+f_dict = {} #initialize a dictionary
 
-txt.close()
+for index in range(len(f_split)):
+	#loop over range of length of list 
+	word = f_split[index]
+	f_split[index] = word.strip('.')
+	#reassign the striped word back into f_split
 
-word_dict = {}
-
-word_split = f.split()
-
-for range in f:
-
-#if name_key in name:
-#do something
-
-# for key in my_stuff.keys():
-# 	my_stuff[key] = my_stuff[key] / 2
-
-# no length in dictionary
-
-#see if entry exist and then make new entry or increment by one 
+for f in f_split:
+	f_dict[word] = f_dict.get(word, 0) + 1 #fun with tuples to see if key exists, if it doesn't, return 0
