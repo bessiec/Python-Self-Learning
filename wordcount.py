@@ -8,19 +8,19 @@ script, filename = argv
 
 text = open(filename).read().lower() #open and read the file, makes it into one string lowercase
 
-text = re.sub("["+string.punctuation+"]", '', text)
+text = re.sub("["+string.punctuation+"]", '', text) #strip punctuation
 
 
-word_count = {}
+word_count = {} #intialize a dictionary
 
 for word in text:
 	word_count[word] = word_count.get(word, 0) +1 
 
 for word, num in word_count.iteritems():
-	print "The word %s occurs %d times." % (word, num) 
+	print "The word %s occurs %d times." % (word, num)  #print in order
 
 
 word_count_ordered = sorted(word_count.iteritems(), key = lambda word: (word[1], word[0]), reverse = False)
 
 for word, num in word_count_ordered:
-	print "The word %s occurs %d times." % (word, num) 
+	print "The word %s occurs %d times." % (word, num)  #print by order of frequency 
