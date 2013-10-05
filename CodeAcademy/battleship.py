@@ -24,10 +24,6 @@ def random_col(board):
 def random_row(board):
     return randint(0, len(board[0]) -1) #we do this because board starts 0, 1, 2... 
 
-#placing the battleship
-ship_row = random_row(board)
-ship_col = random_col(board)
-
 #player actions
 for turn in range(4): #four chances to guess
     guess_row = int(raw_input("Guess Row:"))
